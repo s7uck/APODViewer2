@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" title="<%= title %>">
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="date" content="<%= date %>">
+    <meta name="description" content="<%- explanation %>">
+    <meta name="author" content="<%= copyright %>">
+    <meta property="og:title" content="<%= title %>">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://apod.nasa.gov/apod/astropix.html">
+    <meta property="og:locale" content="en">
+    <meta property="og:description" content="<%- explanation %>">
+    <meta property="og:image" content="<%= url %>">
+    <meta property="og:image:secure_url" content="<%= url %>">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="color-scheme" content="dark">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="icon" href="https://apod.nasa.gov/apod/calendar/today.jpg">
+  </head>
+  <body>
+
+    <main>
+      <picture>
+        <<%= type %> src="<%= url %>" alt="<%= title %>"></<%= type %>>
+        <figcaption>
+          <article>
+            <h1><%= title %></h1>
+            <p><%- explanation %></p>
+          </article>
+          <form name="datepicker" action="/">
+            <input name="date" type="date" min="1995-06-16" max="<%= new Date() %>" value="<%= date %>">
+            <input type="submit" value="→">
+          </form>
+          <a href="https://apod.nasa.gov/apod/astropix.html"><address id="credits">© <%= copyright %></address></a>
+        </figcaption>
+      </picture>
+    </main>
+  </body>
+</html>
+
+
