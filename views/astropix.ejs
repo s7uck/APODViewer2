@@ -17,9 +17,14 @@
     <meta property="og:image:type" content="image/jpeg">
     <meta name="color-scheme" content="dark">
     <link rel="stylesheet" href="stylesheets/style.css">
+    <% url = new URL(location.href) %>
+    <% theme = url?.searchParams?.get("theme") %>
+    <% if (theme) { %>
+      <link rel="stylesheet" href="themes/<%= theme %>">
+    <% } %>
     <link rel="icon" href="https://apod.nasa.gov/apod/calendar/today.jpg">
   </head>
-  <body>
+  <body onload="document.cookie = 'theme=' + theme ';'">
 
     <main>
       <picture>
