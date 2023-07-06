@@ -12,7 +12,7 @@ function formatDate(date) {
 
 function cacheAPOD(apod) {
 	apodString = JSON.stringify(apod, null, 2)
-	filename = ARCHIVE_DIR + apod.date
+	filename = ARCHIVE_DIR + apod.date + '.json'
 	fs.writeFileSync(filename, apodString)
 }
 
