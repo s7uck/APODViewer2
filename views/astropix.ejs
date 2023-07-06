@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="stylesheets/style.css">
     <link rel="icon" href="https://apod.nasa.gov/apod/calendar/today.jpg">
   </head>
-  <body onload="document.cookie = 'theme=' + theme ';'">
+  <body>
 
     <main>
       <picture>
@@ -31,7 +31,7 @@
           </article>
           <br><br>
           <form name="datepicker" action="/">
-            <input name="date" type="date" min="1995-06-16" max="<%= new Date() %>" value="<%= date %>">
+            <input name="date" type="date" min="1995-06-16" max="<%= new Date().toISOString().split('T')[0] %>" value="<%= date %>">
             <input type="submit" value="→">
           </form>
           <a href="https://apod.nasa.gov/apod/astropix.html"><address id="credits">© <%= copyright %></address></a>
