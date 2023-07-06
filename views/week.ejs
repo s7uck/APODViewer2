@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" title="This Week on APOD">
+    <title>This Week on APOD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="date" content="<%= week[0].date %>">
+    <meta name="description" content="Explore the latest images showcased this week by NASA">
+    <meta name="author" content="<%= week[0].copyright %>">
+    <meta property="og:title" content="This Week on APOD">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://apod.nasa.gov/apod/astropix.html">
+    <meta property="og:locale" content="en">
+    <meta property="og:description" content="Explore the latest images showcased this week by NASA... like <%= week[0].title %> and more.">
+    <meta property="og:image" content="<%= url %>">
+    <meta property="og:image:secure_url" content="<%= url %>">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="color-scheme" content="dark">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="icon" href="https://apod.nasa.gov/apod/calendar/today.jpg">
+
+    <style>
+      html {
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+      }
+      picture {
+        width: 100vw !important;
+        height: 100vh;
+        scroll-snap-align: center;
+        scroll-snap-type: always;
+      }
+      picture img {
+        background-attachment: fixed;
+      }
+      main {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 100vw;
+      }
+    </style>
+  </head>
+  <body>
+
+    <main>
+      <% for (i = 0; i < 7; i++) { %>
+      <% apod = week[i] %>
+      <picture>
+        <<%= types[i] %> src="<%= apod.url %>" alt="<%= apod.title %>"></<%= types[i] %>>
+        <figcaption>
+          <article>
+            <h1><%= apod.title %></h1>
+            <p><%- apod.explanation %></p>
+          </article>
+          <br><br>
+          <form name="datepicker" action="/">
+            <input name="date" type="date" min="1995-06-16" max="<%= new Date().toISOString().split('T')[0] %>" value="<%= apod.date %>">
+            <input type="submit" value="→">
+          </form>
+          <a href="https://apod.nasa.gov/apod/astropix.html"><address id="credits">© <%= apod.copyright %></address></a>
+        </figcaption>
+      </picture>
+      <% } %>
+    </main>
+  </body>
+</html>
+
+
