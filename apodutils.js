@@ -31,6 +31,10 @@ async function getAPOD(date=new Date()) {
 	apod = await res.json();
 	cacheAPOD(apod);
   }
+  if (!apod) { // if apod is empty or not available yet (early morning hours)
+  	date.setDate(date.getDate() - 1);
+  	apod = await getAPOD(date);
+  }
   return apod
 }
 
